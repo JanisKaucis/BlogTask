@@ -23,9 +23,11 @@ class MyBlogsService
     public function handleUpdate($blog, $request)
     {
         $requestData = $request->except('_token', 'image', 'categories');
-        Storage::disk('public')->delete($blog->image);
-        $path = Storage::disk('public')->put('blogs/images/'.auth()->user()->id, $request->file('image'));
-        $requestData['image'] = $path;
+        if ($blog->image && $request->image) {
+            Storage::disk('public')->delete($blog->image);
+            $path = Storage::disk('public')->put('blogs/images/'.auth()->user()->id, $request->file('image'));
+            $requestData['image'] = $path;
+        }
         $blog->update($requestData);
         foreach ($request->categories as $category) {
             $blog->categories()->update([

@@ -11,7 +11,7 @@
                 class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                 @foreach($blogs as $blog)
                     <article class="flex flex-col items-start justify-between">
-                        <a href="{{ route('blogs.show', ['blog' => $blog]) }}">
+                        <a href="{{ route('my-blogs.show', ['blog' => $blog]) }}">
                             <div class="relative w-full">
                                 <img src="{{ asset('storage/'.$blog->image) }}" alt=""
                                      class="aspect-video w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
@@ -31,20 +31,15 @@
                             </div>
                             <div class="group relative">
                                 <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                                    <a href="#">
-                                        <span class="absolute inset-0"></span>
-                                        {{ $blog->title }}
-                                    </a>
+                                    <span class="absolute inset-0"></span>
+                                    {{ $blog->title }}
                                 </h3>
-                                <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">{{ $blog->description }}</p>
                             </div>
-                            <div class="relative mt-8 flex items-center gap-x-4">
+                            <div class="relative mt-2 flex items-center gap-x-4">
                                 <div class="text-sm/6">
                                     <p class="font-semibold text-gray-900">
-                                        <a href="#">
-                                            <span class="absolute inset-0"></span>
-                                            {{ $blog->author }}
-                                        </a>
+                                        <span class="absolute inset-0"></span>
+                                        Author: {{ $blog->author }}
                                     </p>
                                 </div>
                             </div>

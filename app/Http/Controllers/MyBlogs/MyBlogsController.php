@@ -4,9 +4,11 @@ namespace App\Http\Controllers\MyBlogs;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
+use App\Http\Requests\BlogUpdateRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Services\MyBlogsService;
+use Illuminate\Support\Facades\Log;
 
 class MyBlogsController extends Controller
 {
@@ -45,7 +47,7 @@ class MyBlogsController extends Controller
 
         return view('myBlogs.edit', compact('blog', 'categories', 'selectedCategories'));
     }
-    public function update(Blog $blog, BlogRequest $request)
+    public function update(Blog $blog, BlogUpdateRequest $request)
     {
         $blog = $this->service->handleUpdate($blog, $request);
         return redirect()->route('my-blogs.show', ['blog' => $blog]);

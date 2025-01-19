@@ -51,20 +51,15 @@
                             </div>
                             <div class="group relative">
                                 <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                                    <a href="#">
-                                        <span class="absolute inset-0"></span>
-                                        {{ $blog->title }}
-                                    </a>
+                                    <span class="absolute inset-0"></span>
+                                    {{ $blog->title }}
                                 </h3>
-                                <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">{{ $blog->description }}</p>
                             </div>
-                            <div class="relative mt-8 flex items-center gap-x-4">
+                            <div class="relative mt-2 flex items-center gap-x-4">
                                 <div class="text-sm/6">
                                     <p class="font-semibold text-gray-900">
-                                        <a href="#">
-                                            <span class="absolute inset-0"></span>
-                                            {{ $blog->author }}
-                                        </a>
+                                        <span class="absolute inset-0"></span>
+                                        Author: {{ $blog->author }}
                                     </p>
                                 </div>
                             </div>

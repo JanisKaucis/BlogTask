@@ -13,7 +13,7 @@
                          src="{{ asset('storage/'.$blog->image) }}"
                          alt="">
                 </figure>
-                <p class="my-6">{{ $blog->description }}</p>
+                <div class="my-6">{!! $blog->description !!}</div>
                 <div class="mb-2">
                     <time datetime="2020-03-16"
                           class="text-gray-500">{{ $blog->creation_datetime }}</time>

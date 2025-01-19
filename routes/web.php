@@ -7,7 +7,9 @@ use App\Http\Controllers\MyBlogs\MyBlogsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\IsBlogAuthor;
 use App\Http\Middleware\IsCommentAuthor;
+use App\Http\Middleware\XssSanitization;
 use Illuminate\Support\Facades\Route;
+use ProtoneMedia\LaravelXssProtection\Middleware\XssCleanInput;
 
 Route::get('/', [BlogsController::class, 'index'])->name('blogs');
 Route::get('/blog/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
@@ -21,18 +23,16 @@ Route::middleware('auth')->group(function () {
 Route::prefix('my-blogs')->middleware('auth')->group(function () {
     Route::get('/', [MyBlogsController::class, 'index'])->name('my-blogs');
     Route::get('/create', [MyBlogsController::class, 'create'])->name('my-blogs.create');
-    Route::post('/store', [MyBlogsController::class, 'store'])->name('my-blogs.store');
+    Route::post('/store', [MyBlogsController::class, 'store'])
+        ->middleware(XssCleanInput::class)->name('my-blogs.store');
     Route::middleware(IsBlogAuthor::class)->group(function () {
         Route::get('/edit/{blog}', [MyBlogsController::class, 'edit'])->name('my-blogs.edit');
-        Route::post('/update/{blog}', [MyBlogsController::class, 'update'])->name('my-blogs.update');
+        Route::post('/update/{blog}', [MyBlogsController::class, 'update'])
+            ->middleware(XssCleanInput::class)->name('my-blogs.update');
         Route::get('/show/{blog}', [MyBlogsController::class, 'show'])->name('my-blogs.show');
         Route::delete('/destroy/{blog}', [MyBlogsController::class, 'destroy'])->name('my-blogs.destroy');
     });
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
