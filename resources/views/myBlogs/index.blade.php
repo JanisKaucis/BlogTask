@@ -34,6 +34,7 @@
                                     <span class="absolute inset-0"></span>
                                     {{ $blog->title }}
                                 </h3>
+                                <div class="mt-5 line-clamp-3 text-sm/6 text-gray-600">{!! $blog->description !!}</div>
                             </div>
                             <div class="relative mt-2 flex items-center gap-x-4">
                                 <div class="text-sm/6">

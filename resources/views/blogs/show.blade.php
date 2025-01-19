@@ -5,7 +5,7 @@
                class="rounded-md bg-gray-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-700">
                 Back to All Blogs</a>
         </div>
-        <div class="mx-auto max-w-3xl text-base/7 text-gray-700">
+        <div class="mx-auto max-w-5xl text-base/7 text-gray-700">
             <div>
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{ $blog->title }}</h1>
                 <figure class="mt-16">

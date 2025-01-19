@@ -23,12 +23,10 @@ Route::middleware('auth')->group(function () {
 Route::prefix('my-blogs')->middleware('auth')->group(function () {
     Route::get('/', [MyBlogsController::class, 'index'])->name('my-blogs');
     Route::get('/create', [MyBlogsController::class, 'create'])->name('my-blogs.create');
-    Route::post('/store', [MyBlogsController::class, 'store'])
-        ->middleware(XssCleanInput::class)->name('my-blogs.store');
+    Route::post('/store', [MyBlogsController::class, 'store'])->name('my-blogs.store');
     Route::middleware(IsBlogAuthor::class)->group(function () {
         Route::get('/edit/{blog}', [MyBlogsController::class, 'edit'])->name('my-blogs.edit');
-        Route::post('/update/{blog}', [MyBlogsController::class, 'update'])
-            ->middleware(XssCleanInput::class)->name('my-blogs.update');
+        Route::post('/update/{blog}', [MyBlogsController::class, 'update'])->name('my-blogs.update');
         Route::get('/show/{blog}', [MyBlogsController::class, 'show'])->name('my-blogs.show');
         Route::delete('/destroy/{blog}', [MyBlogsController::class, 'destroy'])->name('my-blogs.destroy');
     });
