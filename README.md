@@ -18,6 +18,8 @@ Run php artisan db:seed
 
 Run npm install
 
+Run php artisan storage:link
+
 Run npm run dev
 
 Run php artisan serve
