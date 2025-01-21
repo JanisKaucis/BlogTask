@@ -10,6 +10,8 @@ Run cp .env.example .env or copy .env.example .env
 
 Run php artisan key:generate
 
+Setup database
+
 Run php artisan migrate
 
 Run php artisan db:seed
