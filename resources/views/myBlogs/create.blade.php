@@ -23,7 +23,7 @@
                             <label class="font-semibold text-gray-900 mb-2 block">Upload image</label>
                             <input type="file" name="image"
                                    class="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"/>
-                            <p class="text-xs text-gray-400 mt-2">PNG, JPG, WEBP are Allowed.</p>
+                            <p class="text-xs text-gray-400 mt-2">PNG, JPG are Allowed.</p>
                             <x-input-error :messages="$errors->get('image')" class="mt-2"/>
                         </div>
                         <div class="col-span-2 mb-2">

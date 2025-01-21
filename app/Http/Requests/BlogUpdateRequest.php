@@ -24,7 +24,7 @@ class BlogUpdateRequest extends FormRequest
         return [
             'author' => 'required',
             'title' => 'required',
-            'image' => 'sometimes',
+            'image' => 'sometimes|extensions:jpg,png|nullable',
             'description' => 'required',
             'categories' => 'required',
             'creation_datetime' => 'required',
