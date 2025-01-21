@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <div class="col-span-2">
-                            <x-primary-button>Update</x-primary-button>
+                            <x-primary-button>Store</x-primary-button>
                         </div>
                     </div>
                 </form>
