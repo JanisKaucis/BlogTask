@@ -2,15 +2,15 @@
     <div class="bg-white pt-4 pb-24 sm:pb-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="flex justify-end mb-4">
-                <a href="{{ route('my-blogs') }}" type="button"
+                <a href="{{ route('my-blogs') }}"
                    class="rounded-md bg-gray-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-700">
                     All Blogs</a>
-                <a href="{{ route('my-blogs.show', ['blog' => $blog]) }}" type="button"
+                <a href="{{ route('my-blogs.show', ['blog' => $blog]) }}"
                    class="ml-2 rounded-md bg-gray-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-700">
                     Show Blog</a>
             </div>
-            <div class="flex justify-center">
-                <form action="{{ route('my-blogs.update', ['blog' => $blog]) }}" method="POST"
+            <div>
+                <form id="blog-edit" action="{{ route('my-blogs.update', ['blog' => $blog]) }}" method="POST"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="grid grid-cols-2">
@@ -60,7 +60,7 @@
                             <x-input-error :messages="$errors->get('creation_datetime')" class="mt-2"/>
                         </div>
                         <div class="col-span-1">
-                            <div class="mt-2 grid grid-cols-1">
+                            <div class="mt-2 mb-4 grid grid-cols-1">
                                 <fieldset>
                                     <legend class="text-base font-semibold text-gray-900">Categories</legend>
                                     <div class="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
@@ -95,11 +95,22 @@
                                 </fieldset>
                             </div>
                         </div>
-                        <div class="col-span-2">
-                            <x-primary-button>Update</x-primary-button>
-                        </div>
                     </div>
                 </form>
+                <div class="flex justify-start">
+                    <x-primary-button form="blog-edit">Update</x-primary-button>
+                    <a class="ml-2 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                       href="{{ route('my-blogs.show', ['blog' => $blog]) }}">Cancel</a>
+                    <div class="ml-2">
+                        <form method="POST" action="{{ route('my-blogs.destroy', ['blog' => $blog]) }}">
+                            @csrf
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this Blog?')"
+                                    class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

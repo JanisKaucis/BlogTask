@@ -2,14 +2,11 @@
 
 use App\Http\Controllers\Blogs\BlogCommentsController;
 use App\Http\Controllers\Blogs\BlogsController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyBlogs\MyBlogsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\IsBlogAuthor;
 use App\Http\Middleware\IsCommentAuthor;
-use App\Http\Middleware\XssSanitization;
 use Illuminate\Support\Facades\Route;
-use ProtoneMedia\LaravelXssProtection\Middleware\XssCleanInput;
 
 Route::get('/', [BlogsController::class, 'index'])->name('blogs');
 Route::get('/blog/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
@@ -28,7 +25,7 @@ Route::prefix('my-blogs')->middleware('auth')->group(function () {
         Route::get('/edit/{blog}', [MyBlogsController::class, 'edit'])->name('my-blogs.edit');
         Route::post('/update/{blog}', [MyBlogsController::class, 'update'])->name('my-blogs.update');
         Route::get('/show/{blog}', [MyBlogsController::class, 'show'])->name('my-blogs.show');
-        Route::delete('/destroy/{blog}', [MyBlogsController::class, 'destroy'])->name('my-blogs.destroy');
+        Route::post('/destroy/{blog}', [MyBlogsController::class, 'destroy'])->name('my-blogs.destroy');
     });
 });
 

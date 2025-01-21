@@ -57,8 +57,10 @@ class MyBlogsController extends Controller
         $categories = Category::pluck('name', 'id');
         return view('myBlogs.show', compact('blog', 'categories'));
     }
-    public function destroy()
+    public function destroy(Blog $blog)
     {
+        $blog->delete();
 
+        return redirect()->route('my-blogs');
     }
 }
