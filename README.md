@@ -14,6 +14,8 @@ Run php artisan migrate
 
 Run php artisan db:seed
 
+Run npm install
+
 Run npm run dev
 
 Run php artisan serve
