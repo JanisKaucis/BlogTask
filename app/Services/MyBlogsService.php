@@ -29,8 +29,9 @@ class MyBlogsService
             $requestData['image'] = $path;
         }
         $blog->update($requestData);
+        $blog->categories()->delete();
         foreach ($request->categories as $category) {
-            $blog->categories()->update([
+            $blog->categories()->create([
                 'category_id' => $category
             ]);
         }

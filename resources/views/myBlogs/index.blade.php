@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="bg-white pt-4 pb-24 sm:pb-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="flex @if(count($blogs) < 1) justify-center @else justify-end @endif">
