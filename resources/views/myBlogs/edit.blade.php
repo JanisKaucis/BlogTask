@@ -23,7 +23,7 @@
                             </div>
                             <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1 mb-2">
+                        <div class="col-span-2 sm:col-span-1 mb-2">
                             @if($blog->image ?? null)
                                 <p class="font-semibold text-gray-900">Previous image</p>
                                 <img src="{{ asset('storage/'.$blog->image) }}" alt="Blog image" width="200">
@@ -40,7 +40,7 @@
                                       id="description">{{ old('description') ?? $blog->description ?? ''}}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1 mb-2">
+                        <div class="col-span-2 sm:col-span-1 mb-2">
                             <label for="author" class="block font-semibold text-gray-900">Author</label>
                             <div class="mt-2">
                                 <input type="text" name="author" id="author"
@@ -49,7 +49,7 @@
                             </div>
                             <x-input-error :messages="$errors->get('author')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1 mb-2 ml-2">
+                        <div class="col-span-2 sm:col-span-1 mb-2 ml-2">
                             <label for="creation_datetime" class="block font-semibold text-gray-900">Creation
                                 datetime</label>
                             <div class="mt-2">
@@ -59,7 +59,7 @@
                             </div>
                             <x-input-error :messages="$errors->get('creation_datetime')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1">
+                        <div class="col-span-2 sm:col-span-1">
                             <div class="mt-2 mb-4 grid grid-cols-1">
                                 <fieldset>
                                     <legend class="text-base font-semibold text-gray-900">Categories</legend>

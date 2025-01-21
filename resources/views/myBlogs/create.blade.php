@@ -19,7 +19,7 @@
                             </div>
                             <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1 mb-2">
+                        <div class="col-span-2 sm:col-span-1 mb-2">
                             <label class="font-semibold text-gray-900 mb-2 block">Upload image</label>
                             <input type="file" name="image"
                                    class="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"/>
@@ -32,7 +32,7 @@
                                       id="description">{{ old('description') ?? ''}}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1 mb-2">
+                        <div class="col-span-2 sm:col-span-1 mb-2">
                             <label for="author" class="block font-semibold text-gray-900">Author</label>
                             <div class="mt-2">
                                 <input type="text" name="author" id="author"
@@ -41,7 +41,7 @@
                             </div>
                             <x-input-error :messages="$errors->get('author')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1 mb-2 ml-2">
+                        <div class="col-span-2 sm:col-span-1 mb-2 ml-2">
                             <label for="creation_datetime" class="block font-semibold text-gray-900">Creation
                                 datetime</label>
                             <div class="mt-2">
@@ -51,7 +51,7 @@
                             </div>
                             <x-input-error :messages="$errors->get('creation_datetime')" class="mt-2"/>
                         </div>
-                        <div class="col-span-1">
+                        <div class="col-span-2 sm:col-span-1">
                             <div class="mt-2 grid grid-cols-1">
                                 <fieldset>
                                     <legend class="text-base font-semibold text-gray-900">Categories</legend>
