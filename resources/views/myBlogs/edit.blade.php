@@ -91,6 +91,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        <x-input-error :messages="$errors->get('categories')" class="mt-2"/>
                                     </div>
                                 </fieldset>
                             </div>
