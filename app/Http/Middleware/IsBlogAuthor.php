@@ -16,7 +16,7 @@ class IsBlogAuthor
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->user()->id !== $request->blog->user_id) {
-            return redirect('/');
+            return redirect('/blogs');
         }
         return $next($request);
     }
