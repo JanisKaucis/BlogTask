@@ -73,7 +73,7 @@
                                                 <div class="flex h-6 shrink-0 items-center">
                                                     <div class="group grid size-4 grid-cols-1">
                                                         <input id="person-1" name="categories[]" type="checkbox"
-                                                               @if(in_array($category->id, old('categories') ?? $blog->categories->pluck('category_id')->toArray() ?? [])) checked
+                                                               @if(in_array($category->id, old('categories') ?? $blog->categories->pluck('id')->toArray() ?? [])) checked
                                                                @endif value="{{ $category->id }}"
                                                                class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">
                                                         <svg

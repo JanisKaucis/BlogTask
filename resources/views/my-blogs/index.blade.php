@@ -25,7 +25,7 @@
                             <div class="mt-2 grid grid-cols-4 items-center gap-x-2 text-xs">
                                 @foreach($blog->categories as $category)
                                     <span
-                                       class="rounded-full bg-gray-50 mb-1 px-3 py-1.5 font-medium text-gray-600">{{ $category->category->name }}</span>
+                                       class="rounded-full bg-gray-50 mb-1 px-3 py-1.5 font-medium text-gray-600">{{ $category->name }}</span>
                                 @endforeach
                             </div>
                             <div class="group relative">

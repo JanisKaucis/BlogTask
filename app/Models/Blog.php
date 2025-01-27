@@ -11,13 +11,20 @@ class Blog extends Model
     protected $casts = [
         'description' => CleanHtml::class, // cleans both when getting and setting the value
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function categories()
     {
-        return $this->hasMany(BlogCategory::class);
+        return $this->belongsToMany(Category::class, 'blog_categories');
     }
 }

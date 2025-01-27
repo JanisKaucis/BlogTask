@@ -16,11 +16,7 @@ class MyBlogsService
         $path = Storage::disk('public')->put('blogs/images/'.auth()->user()->id, $request->file('image'));
         $requestData['image'] = $path;
         $blog = auth()->user()->blogs()->create($requestData);
-        foreach ($request->categories as $category) {
-            $blog->categories()->create([
-                'category_id' => $category
-            ]);
-        }
+        $blog->categories()->sync($request->categories);
 
         return $blog;
     }
@@ -39,12 +35,7 @@ class MyBlogsService
             $requestData['image'] = $path;
         }
         $blog->update($requestData);
-        $blog->categories()->delete();
-        foreach ($request->categories as $category) {
-            $blog->categories()->create([
-                'category_id' => $category
-            ]);
-        }
+        $blog->categories()->sync($request->categories);
 
         return $blog;
     }
