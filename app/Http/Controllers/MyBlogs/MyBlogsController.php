@@ -82,9 +82,9 @@ class MyBlogsController extends Controller
      */
     public function show(Blog $blog)
     {
-        $categories = Category::pluck('name', 'id');
+        $blog->load('categories');
 
-        return view('my-blogs.show', compact('blog', 'categories'));
+        return view('my-blogs.show', compact('blog'));
     }
 
     /**
