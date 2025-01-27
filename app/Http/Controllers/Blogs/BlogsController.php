@@ -5,46 +5,41 @@ namespace App\Http\Controllers\Blogs;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
-use App\Services\BlogsService;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
 {
-    private BlogsService $service;
-
-    public function __construct(BlogsService $service)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    public function index(Request $request)
     {
-        $this->service = $service;
-    }
+        $category = $request->category;
+        $search = $request->search;
 
-    public function index()
-    {
-        $blogs = Blog::with('categories', 'categories.category')->get();
+        $blogs = Blog::with('categories', 'categories.category')
+            ->when($category, function ($query) use ($category) {
+                $query->whereHas('categories', function ($query) use ($category) {
+                    $query->where('category_id', $category);
+                });
+            })->when($search, function ($query) use ($search) {
+                $query->where('title', 'like', "%$search%")
+                    ->orWhere('description', 'like', "%$search%");
+            })->paginate(10);
+
         return view('blogs.index', compact('blogs'));
     }
 
+    /**
+     * @param Blog $blog
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function show(Blog $blog)
     {
+        $blog->load('comments.user');
         $categories = Category::pluck('name', 'id');
-        $comments = $blog->comments()->with('user')->get();
-        return view('blogs.show', compact('blog', 'categories', 'comments'));
-    }
 
-    public function category(Category $category)
-    {
-        $blogs = Blog::whereHas('categories', function ($query) use ($category){
-            $query->where('category_id', $category->id);
-        })->with('categories', 'categories.category')->get();
-        return view('blogs.index', compact('blogs'));
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->input('search');
-        $blogs = Blog::where('title', 'like', "%$search%")
-            ->orWhere('description', 'like', "%$search%")
-            ->get();
-
-        return view('blogs.index', compact('blogs'));
+        return view('blogs.show', compact('blog', 'categories'));
     }
 }

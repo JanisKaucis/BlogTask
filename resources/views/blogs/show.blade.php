@@ -27,7 +27,7 @@
                 <div class="my-10">
                     <h2>Comments</h2>
                     <div class="">
-                        @foreach($comments as $comment)
+                        @foreach($blog->comments as $comment)
                             <div class="flex space-x-4 text-sm text-gray-500">
                                 <div class="flex-1 py-1">
                                     <h3 class="font-medium text-gray-900">{{$comment->user->name ?? 'Deleted user'}}</h3>

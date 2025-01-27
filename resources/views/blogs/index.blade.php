@@ -1,5 +1,5 @@
 <x-app-layout>
-    <form action="{{ route('blogs.search') }}" method="GET" enctype="multipart/form-data">
+    <form action="{{ route('blogs') }}" method="GET" enctype="multipart/form-data">
         <div class="bg-white shadow">
             <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
                 <div class="flex h-16 justify-between">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="mt-2 grid grid-cols-4 items-center gap-x-2 text-xs">
                                 @foreach($blog->categories as $category)
-                                    <a href="{{ route('blogs.category', ['category' => $category->category_id]) }}"
+                                    <a href="{{ route('blogs', ['category' => $category->category_id]) }}"
                                        class="rounded-full bg-gray-50 mb-1 px-3 py-1.5 font-medium text-gray-600">{{ $category->category->name }}</a>
                                 @endforeach
                             </div>
@@ -67,6 +67,9 @@
                         </div>
                     </article>
                 @endforeach
+            </div>
+            <div class="mt-4">
+                {{ $blogs->links() }}
             </div>
         </div>
     </div>

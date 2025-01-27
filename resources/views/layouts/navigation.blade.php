@@ -32,7 +32,7 @@
                                 {{__('All Blogs')}}
                             </x-dropdown-link>
                             @foreach($categories as $category)
-                                <x-dropdown-link href="{{ route('blogs.category',['category' => $category->id]) }}">
+                                <x-dropdown-link href="{{ route('blogs',['category' => $category->id]) }}">
                                     {{ucfirst($category->name)}}
                                 </x-dropdown-link>
                             @endforeach
@@ -123,7 +123,7 @@
                         {{__('All Blogs')}}
                     </x-dropdown-link>
                     @foreach($categories as $category)
-                        <x-dropdown-link href="{{ route('blogs.category',['category' => $category->id]) }}">
+                        <x-dropdown-link href="{{ route('blogs',['category' => $category->id]) }}">
                             {{ucfirst($category->name)}}
                         </x-dropdown-link>
                     @endforeach

@@ -8,15 +8,24 @@ use App\Services\BlogsService;
 
 class BlogCommentsController
 {
-    public function __construct(BlogsService $service)
-    {
-        $this->service = $service;
-    }
+    /**
+     * @param Blog $blog
+     * @param BlogCommentRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Blog $blog, BlogCommentRequest $request)
     {
-        $this->service->handleComment($blog, $request);
+        $requestData = $request->validated();
+        $requestData['user_id'] = auth()->user()->id;
+        $blog->comments()->create($requestData);
+
         return back();
     }
+
+    /**
+     * @param Comment $comment
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(Comment $comment)
     {
         $comment->delete();
