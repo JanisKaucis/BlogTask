@@ -1,4 +1,4 @@
-Hello, this is my ICT Blog task
+Hello, this is my Blog task
 
 To run project: 
 
